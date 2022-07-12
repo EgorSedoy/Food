@@ -254,11 +254,6 @@ window.addEventListener("DOMContentLoaded", () => {
             `;//добавляем стили
             form.insertAdjacentHTML('afterend', statusMessage);//добавляем элемент в форму
 
-            const request = new XMLHttpRequest();//создаём объект запроса
-            request.open('POST', 'server.php');//открываем запрос
-
-            // request.setRequestHeader('Content-Type', 'multipart/form-data');//устанавливаем заголовок (не нужно устанавливать если используем XMLHttpRequest + FormData)
-            request.setRequestHeader('Content-Type', 'application/json');//если отправляем в формате json
 
             const formData = new FormData(form);//получаем данные формы
 
@@ -267,19 +262,23 @@ window.addEventListener("DOMContentLoaded", () => {
                 obj[key] = value;//записываем данные в объект
             });
 
-            const json = JSON.stringify(obj);//преобразуем объект в строку для отправки в формате json
-
-            request.send(json);//отправляем данные
-
-            request.addEventListener('load', () => {
-                if (request.status === 200) {
-                    console.log(request.response);
+            fetch('server.php', {//получаем данные с сервера
+                method: 'POST',//передаём метод запроса
+                headers: {//передаём заголовки запроса
+                    'Content-Type': 'application/json'//передаём заголовок запроса
+                },
+                body: JSON.stringify(obj)
+            })
+                .then(data => data.text())//получаем данные от сервера
+                .then(data => {
+                    console.log(data);
                     showThanksModal(message.success);//выводим сообщение об успехе
-                    form.reset();//очищаем форму
-                } else {
+                    statusMessage.remove();//удаляем элемент
+                }).catch(() => {
                     showThanksModal(message.failure);//выводим сообщение об ошибке
-                }
-            });
+                }).finally(() => {
+                    form.reset();//очищаем форму
+                });
         });
     }
 
@@ -307,7 +306,4 @@ window.addEventListener("DOMContentLoaded", () => {
         }, 4000);
     }
 
-    fetch('https://jsonplaceholder.typicode.com/todos/1')//получаем данные из сервера
-        .then(response => response.json())//преобразуем данные в json
-        .then(json => console.log(json));//выводим данные в консоль 
 }); //DOMContentLoaded
