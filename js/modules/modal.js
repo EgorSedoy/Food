@@ -1,23 +1,23 @@
+function openModal() {
+   modal.classList.add('show');//добавляем класс для отображения модального окна
+   modal.classList.remove('hide');//удаляем класс для отображения модального окна
+   document.body.style.overflow = 'hidden';//запрещаем прокрутку страницы
+   clearInterval(modalTimerId);//останавливаем таймер если пользователь сам открыл модальное окно
+}
+
+function closeModal() {
+   modal.classList.remove('show');//добавляем класс для отображения модального окна
+   modal.classList.add('hide');//удаляем класс для отображения модального окна
+   document.body.style.overflow = '';//разрешаем прокрутку страницы
+}
+
 function modal() {
    /*
-        !Показ модального окна
-    */
+     !Показ модального окна
+ */
 
    const modalTrigger = document.querySelectorAll('[data-modal]'),//получаем элемент модального окна
       modal = document.querySelector('.modal');//получаем элемент модального окна
-
-   function openModal() {
-      modal.classList.add('show');//добавляем класс для отображения модального окна
-      modal.classList.remove('hide');//удаляем класс для отображения модального окна
-      document.body.style.overflow = 'hidden';//запрещаем прокрутку страницы
-      clearInterval(modalTimerId);//останавливаем таймер если пользователь сам открыл модальное окно
-   }
-
-   function closeModal() {
-      modal.classList.remove('show');//добавляем класс для отображения модального окна
-      modal.classList.add('hide');//удаляем класс для отображения модального окна
-      document.body.style.overflow = '';//разрешаем прокрутку страницы
-   }
 
    modalTrigger.forEach(item => {//привязываем обработчик клика ко всем элементам модального окна
       item.addEventListener('click', openModal);
@@ -49,4 +49,5 @@ function modal() {
    // window.addEventListener('scroll', showModalByScroll);
 }
 
-module.exports = modal;
+export default modal;
+export { openModal, closeModal };

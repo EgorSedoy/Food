@@ -1,3 +1,5 @@
+import { closeModal, openModal } from './modal';
+
 function form() {
    /*
     ! Создаём обработчик форм
@@ -81,4 +83,4 @@ function form() {
    }
 }
 
-module.exports = form;
+export default form;
