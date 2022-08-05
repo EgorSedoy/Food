@@ -1,11 +1,12 @@
 import { closeModal, openModal } from './modal';
+import { postData } from '../services/services';
 
-function form() {
+function form(formSelector, modalTimerId) {
    /*
     ! Создаём обработчик форм
     */
 
-   const forms = document.querySelectorAll('form');//получаем все формы
+   const forms = document.querySelectorAll(formSelector);//получаем все формы
 
    const message = {//объект для сообщений
       loading: 'img/form/spinner.svg',
@@ -16,17 +17,6 @@ function form() {
    forms.forEach(form => {//перебираем все формы
       bindPostData(form);//вызываем функцию для обработки формы
    });
-
-   const postData = async (url, data) => {
-      const res = await fetch(url, {
-         method: 'POST',
-         headers: {//передаём заголовки запроса
-            'Content-Type': 'application/json'//передаём заголовок запроса
-         },
-         body: data //передаём данные запроса
-      });
-      return await res.json();//получаем ответ от сервера
-   };
 
    function bindPostData(form) {
       form.addEventListener('submit', (event) => {
@@ -62,7 +52,7 @@ function form() {
       const prevModalDialog = document.querySelector('.modal__dialog');
 
       prevModalDialog.classList.add('hide');
-      openModal();
+      openModal('.modal', modalTimerId);
 
       const thanksModal = document.createElement('div');
       thanksModal.classList.add('modal__dialog');
@@ -78,7 +68,7 @@ function form() {
          thanksModal.remove();
          prevModalDialog.classList.add('show');
          prevModalDialog.classList.remove('hide');
-         closeModal();
+         closeModal('.modal');
       }, 4000);
    }
 }
