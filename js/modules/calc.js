@@ -38,7 +38,7 @@ function calc() {
 
 
    function calcTotal() {
-      if (!sex || !height || !weight || !age || !ratio) {
+      if (!sex || !height || height <= 50 || height >= 200 || !weight || weight <= 40 || weight >= 200 || !age || age < 18 || age > 99 || !ratio) {
          result.textContent = "0";
          return;
       }
@@ -92,16 +92,24 @@ function calc() {
 
          switch (input.getAttribute('id')) {
             case 'height':
+               if (input.value <= 50 || input.value >= 200) {
+                  input.style.border = "1px solid red";
+               }
                height = +input.value;
                break;
             case 'weight':
+               if (input.value <= 40 || input.value >= 200) {
+                  input.style.border = "1px solid red";
+               }
                weight = +input.value;
                break;
             case 'age':
+               if (input.value <= 18 || input.value >= 99) {
+                  input.style.border = "1px solid red";
+               }
                age = +input.value;
                break;
          }
-
          calcTotal();
       });
    }

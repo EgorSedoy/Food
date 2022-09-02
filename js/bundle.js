@@ -63,7 +63,7 @@ function calc() {
   initLocalSettings(".calculating__choose_big div", "calculating__choose-item_active");
 
   function calcTotal() {
-    if (!sex || !height || !weight || !age || !ratio) {
+    if (!sex || !height || height <= 50 || height >= 200 || !weight || weight <= 40 || weight >= 200 || !age || age < 18 || age > 99 || !ratio) {
       result.textContent = "0";
       return;
     }
@@ -112,14 +112,26 @@ function calc() {
 
       switch (input.getAttribute('id')) {
         case 'height':
+          if (input.value <= 50 || input.value >= 200) {
+            input.style.border = "1px solid red";
+          }
+
           height = +input.value;
           break;
 
         case 'weight':
+          if (input.value <= 40 || input.value >= 200) {
+            input.style.border = "1px solid red";
+          }
+
           weight = +input.value;
           break;
 
         case 'age':
+          if (input.value <= 18 || input.value >= 99) {
+            input.style.border = "1px solid red";
+          }
+
           age = +input.value;
           break;
       }
@@ -8111,7 +8123,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }, 10000);
   (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_1__["default"])('.tabheader__item', '.tabcontent', '.tabheader__items', 'tabheader__item_active');
   (0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__["default"])('[data-modal]', '.modal', modalTimerId);
-  (0,_modules_timer__WEBPACK_IMPORTED_MODULE_3__["default"])('.timer', '2022-09-01');
+  (0,_modules_timer__WEBPACK_IMPORTED_MODULE_3__["default"])('.timer', '2022-11-01');
   (0,_modules_cards__WEBPACK_IMPORTED_MODULE_7__["default"])();
   (0,_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])();
   (0,_modules_form__WEBPACK_IMPORTED_MODULE_4__["default"])('form', modalTimerId);
