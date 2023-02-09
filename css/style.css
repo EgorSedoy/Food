@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap&subset=cyrillic-ext);
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -147,12 +148,12 @@ a {
 }
 .tabcontainer {
   display: flex;
-  width: 1130px;
+  max-width: 1130px;
   margin: 0 auto;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
 }
 .tabcontent {
-  width: 850px;
+  max-width: 850px;
   position: relative;
 }
 .tabcontent img {
@@ -209,7 +210,7 @@ a {
   display: flex;
   justify-content: space-between;
 }
-.offer .bgc_y {
+.bgc_y {
   position: absolute;
   width: 1109px;
   height: 780px;
@@ -218,7 +219,7 @@ a {
   top: 50px;
 }
 .offer__text {
-  width: 580px;
+  max-width: 580px;
 }
 .offer__descr {
   font-size: 18px;
@@ -358,7 +359,7 @@ a {
   margin: 30px auto 0 auto;
 }
 .calculating__choose_big .calculating__choose-item {
-  width: 200px;
+  max-width: 200px;
 }
 .calculating__divider {
   width: 490px;
