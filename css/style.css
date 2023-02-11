@@ -681,9 +681,6 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-  .header {
-    padding: 0 15px;
-  }
   .header__left-block {
     width: 50%;
   }
@@ -720,8 +717,16 @@ a {
 }
 
 @media only screen and (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    margin-top: 15px;
+    padding: 0;
+  }
+  .header__logo img {
+    height: 75px;
+  }
   .header__left-block {
-    width: 270px;
+    width: 90%;
   }
   button.btn {
     width: 165px;
@@ -736,19 +741,25 @@ a {
   .header__link {
     margin: 0;
   }
+  .preview {
+    padding-bottom: 50px;
+  }
   .tabcontainer {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    margin-top: 250px;
+  }
+  .tabheader {
+    width: 100%;
+    padding: 20px 40px;
   }
   .tabcontent img {
-    width: 100%;
-    height: 300px;
+    height: auto;
   }
   .tabcontent__descr {
-    width: 50%;
-    height: 75%;
-    font-size: 14px;
-    padding: 10px 20px;
-    line-height: 20px;
+    display: block;
+    position: static;
+    width: 100%;
+    height: auto;
     right: 0;
   }
   .preview__life {
@@ -759,6 +770,16 @@ a {
   }
   .title {
     font-size: 24px;
+  }
+  .offer__text .title {
+    text-align: center;
+  }
+  .offer__advantages {
+    margin: 0 auto;
+    text-align: center;
+  }
+  .offer__advantages h2:first-child {
+    margin-top: 40px;
   }
   .offer__descr {
     font-size: 16px;
@@ -784,6 +805,9 @@ a {
   }
   .divider {
     max-width: 330px;
+  }
+  .calculating__field {
+    margin-top: 20px;
   }
   .calculating__choose-item {
     width: 30%;
@@ -813,52 +837,26 @@ a {
     text-align: center;
     margin-top: 25px;
   }
+  .timer__block {
+    width: 22%;
+    height: auto;
+    padding-bottom: 10px;
+  }
+  .timer {
+    margin-top: 20px;
+    padding: 0;
+  }
+  .timer__block span {
+    font-size: 24px;
+  }
 }
 
 @media only screen and (max-width: 320px) {
   .container {
     padding: 0 10px;
   }
-  .header {
-    flex-direction: column;
-    margin-top: 15px;
-  }
-  .header__logo img {
-    height: 75px;
-  }
-  .header__left-block {
-    width: 90%;
-  }
-  .header__right-block {
-    width: 50%;
-  }
-  .tabcontainer {
-    flex-direction: column-reverse;
-    margin-top: 25px;
-  }
-  .tabheader {
-    width: 100%;
-    padding: 20px 40px;
-  }
-  .tabcontent img {
-    height: 100%;
-  }
-  .tabcontent__descr {
-    width: 100%;
-    top: 195px;
-    height: auto;
-  }
   .divider {
     width: 230px;
-  }
-  .offer__advantages {
-    margin: 0;
-  }
-  .offer__advantages h2:first-child {
-    margin-top: 40px;
-  }
-  .offer__text .title {
-    text-align: center;
   }
   #gender .calculating__choose-item {
     width: 45%;
@@ -880,17 +878,5 @@ a {
   }
   .promotion__descr {
     font-size: 18px;
-  }
-  .timer__block {
-    width: 22%;
-    height: auto;
-    padding-bottom: 10px;
-  }
-  .timer {
-    margin-top: 20px;
-    padding: 0;
-  }
-  .timer__block span {
-    font-size: 24px;
   }
 }
